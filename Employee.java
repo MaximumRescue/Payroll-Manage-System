@@ -1,12 +1,13 @@
 import java.util.*;
 /**
- * æè¿°å‘˜å·¥ä¿¡æ¯çš„ç±»
+ * ÃèÊöÔ±¹¤ĞÅÏ¢µÄÀà
  * @version 1.13 2018-06-28
  * @author Jiamin Pan
  */
 public class Employee {
     private String employeeID;
     private String employeeName;
+    private String employeePW;
     private String departName;
     private int basicSalary;
     private int extraSalary;
@@ -36,6 +37,8 @@ public class Employee {
     public Employee(String employeeID, String employeeName) {
         this.employeeID = employeeID;
         this.setEmployeeName(employeeName); 
+        this.setEmployeePW("123456");
+        this.setDepartName(null);
         this.setBasicSalary(0);
         this.setExtraSalary(0);
         this.timeInfo = new HashMap<>();
@@ -64,6 +67,20 @@ public class Employee {
 	 */
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
+	}
+
+    /**
+	 * @return the employeePW
+	 */
+	public String getEmployeePW() {
+		return employeePW;
+	}
+
+	/**
+	 * @param employeePW the employeePW to set
+	 */
+	public void setEmployeePW(String employeePW) {
+		this.employeePW = employeePW;
 	}
 
     /**
@@ -119,7 +136,7 @@ public class Employee {
 	 * @param none
 	 */
 	public void setTaxMoney() {
-        // æ”¶ç¨æ–¹æ³•ä¼¼ä¹åº”è¯¥æ›´åŠ å¤æ‚ä¸€äº›
+        // ÊÕË°·½·¨ËÆºõÓ¦¸Ã¸ü¼Ó¸´ÔÓÒ»Ğ©
 		this.taxMoney = (int) (basicSalary * 0.05);
 	}
     
@@ -128,13 +145,12 @@ public class Employee {
      */
     public void setSickOffDays(int days) {
         Integer Days = new Integer(days);
-        Integer preValue = new Integer(0);
         if (days >= 0) {
-            preValue = this.timeInfo.replace("SickOffDays", Days);
+            Integer preValue = this.timeInfo.replace("SickOffDays", Days);
         }
         else {
-            // è¿™é‡Œåº”è¯¥æ˜¯å‚æ•°æŠ¥é”™çš„éƒ¨åˆ†ï¼Œæ ¹æ®ç½‘é¡µè¿›è¡Œå¤„ç†
-            System.out.println("æ—¶é—´å¿…é¡»ä¸ºæ­£æ•´æ•°");
+            // ÕâÀïÓ¦¸ÃÊÇ²ÎÊı±¨´íµÄ²¿·Ö£¬¸ù¾İÍøÒ³½øĞĞ´¦Àí
+            System.out.println("Ê±¼ä±ØĞëÎªÕıÕûÊı");
         }
     }
 
@@ -143,13 +159,12 @@ public class Employee {
      */
     public void setBusyOffDays(int days) {
         Integer Days = new Integer(days);
-        Integer preValue = new Integer(0);
         if (days >= 0) {
-            preValue = this.timeInfo.replace("BasyOffDays", Days);
+            Integer preValue = this.timeInfo.replace("BasyOffDays", Days);
         }
         else {
-            // è¿™é‡Œåº”è¯¥æ˜¯å‚æ•°æŠ¥é”™çš„éƒ¨åˆ†ï¼Œæ ¹æ®ç½‘é¡µè¿›è¡Œå¤„ç†
-            System.out.println("æ—¶é—´å¿…é¡»ä¸ºæ­£æ•´æ•°");
+            // ÕâÀïÓ¦¸ÃÊÇ²ÎÊı±¨´íµÄ²¿·Ö£¬¸ù¾İÍøÒ³½øĞĞ´¦Àí
+            System.out.println("Ê±¼ä±ØĞëÎªÕıÕûÊı");
         }
     }
 
@@ -158,13 +173,12 @@ public class Employee {
      */
     public void setLateDays(int days) {
         Integer Days = new Integer(days);
-        Integer preValue = new Integer(0);
         if (days >= 0) {
-            preValue = this.timeInfo.replace("LateDays", Days);
+            Integer preValue = this.timeInfo.replace("LateDays", Days);
         }
         else {
-            // è¿™é‡Œåº”è¯¥æ˜¯å‚æ•°æŠ¥é”™çš„éƒ¨åˆ†ï¼Œæ ¹æ®ç½‘é¡µè¿›è¡Œå¤„ç†
-            System.out.println("æ—¶é—´å¿…é¡»ä¸ºæ­£æ•´æ•°");
+            // ÕâÀïÓ¦¸ÃÊÇ²ÎÊı±¨´íµÄ²¿·Ö£¬¸ù¾İÍøÒ³½øĞĞ´¦Àí
+            System.out.println("Ê±¼ä±ØĞëÎªÕıÕûÊı");
         }
     }    
 
@@ -173,13 +187,12 @@ public class Employee {
      */
     public void setOvertimeDays(int days) {
         Integer Days = new Integer(days);
-        Integer preValue = new Integer(0);
         if (days >= 0) {
-            preValue = this.timeInfo.replace("OvertimeDays", Days);
+            Integer preValue = this.timeInfo.replace("OvertimeDays", Days);
         }
         else {
-            // è¿™é‡Œåº”è¯¥æ˜¯å‚æ•°æŠ¥é”™çš„éƒ¨åˆ†ï¼Œæ ¹æ®ç½‘é¡µè¿›è¡Œå¤„ç†
-            System.out.println("æ—¶é—´å¿…é¡»ä¸ºæ­£æ•´æ•°");
+            // ÕâÀïÓ¦¸ÃÊÇ²ÎÊı±¨´íµÄ²¿·Ö£¬¸ù¾İÍøÒ³½øĞĞ´¦Àí
+            System.out.println("Ê±¼ä±ØĞëÎªÕıÕûÊı");
         }
     }
 
@@ -216,6 +229,8 @@ public class Employee {
      */
     public int getSickOffMoney() {
         return moneyOfSick * this.getSickOffDays();
+        // return Fee.moneyOfSick * this.getSickOffDays();
+        // Ö®ºóÀàËÆ´¦Àí¼´¿É
     }
 
     /**

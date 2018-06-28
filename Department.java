@@ -1,6 +1,6 @@
 import java.util.*;
 /**
- * 鎻忚堪閮ㄩ棬淇℃伅鐨勭被
+ * 描述部门信息的类
  * @version 1.11 2018-06-28
  * @author Jiamin Pan
  */
