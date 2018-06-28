@@ -1,40 +1,44 @@
 import java.util.*;
 /**
- * 描述部门信息的类
- * @version 1.10 2018-06-27
+ * 鎻忚堪閮ㄩ棬淇℃伅鐨勭被
+ * @version 1.11 2018-06-28
  * @author Jiamin Pan
  */
 public class Department {
-    private String Did;
-    private String Dname;
+    private String departID;
+    private String departName;
     private ArrayList<Employee> employeeList;
 
-    // constructor
-    public Department(String Did, String Dname) {
-        this.setDid(Did);
-        this.setDname(Dname);
+    /** 
+	 * constructor 
+	 * @param departID department's id
+	 * @param departName department's name
+	 */
+    public Department(String departID, String departName) {
+        this.departID = departID;
+        this.setDepartName(departName);
         this.employeeList = new ArrayList<>();
     }
 
     /**
-	 * @return the did
+	 * @return the department's ID
 	 */
-	public String getDid() {
-		return Did;
+	public String getDepartID() {
+		return departID;
 	}
 
 	/**
-	 * @return the dname
+	 * @return the departName
 	 */
-	public String getDname() {
-		return Dname;
+	public String getDepartName() {
+		return departName;
 	}
 
 	/**
-	 * @param dname the dname to set
+	 * @param departName the departName to set
 	 */
-	public void setDname(String dname) {
-		this.Dname = dname;
+	public void setDepartName(String departName) {
+		this.departName = departName;
 	}
 
 	/**
@@ -44,12 +48,19 @@ public class Department {
 		return employeeList;
 	}
 
-	// 下面的这些方法需要重新编写加上异常处理的部分
+	/**
+	 * add the employee to the list
+	 * @param e the employee to add
+	 */
     public void addEmployee(Employee e) {
-		e.setDname(this.Dname);
+		e.setDepartName(this.departName);
 		this.employeeList.add(e);
     }
 
+	/**
+	 * remove the employee from the list
+	 * @param e the employee to remove
+	 */
     public void delEmployee(Employee e) {
         this.employeeList.remove(e);
     }
