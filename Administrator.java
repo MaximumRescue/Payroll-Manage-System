@@ -1,15 +1,13 @@
 import java.util.*;
 /**
  * 用于描述管理员信息的类
- * @version 1.00 2018-06-28
+ * @version 1.01 2018-06-28
  * @author Jiamin Pan
  */
 public class Administrator {
 	private int adminID;
 	private String password;
 	private String username;
-	private String phoneNumber;
-	private String emailAddress;
 
     /** 
      * constructor 
@@ -17,15 +15,24 @@ public class Administrator {
      * @param password administrator's password
     */
     public Administrator(int adminID, String password) {
-		this.adminID = adminID;
-        this.setPassword(password);
-    }
+		this.setAdminID(adminID);
+		this.setPassword(password);
+		this.username = null;
+    }	
 
 	/**
 	 * @return the adminID
 	 */
 	public int getAdminID() {
 		return adminID;
+	}
+
+
+	/**
+	 * @param adminID the adminID to set
+	 */
+	private void setAdminID(int adminID) {
+		this.adminID = adminID;
 	}
 
 	/**
@@ -54,33 +61,5 @@ public class Administrator {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	/**
-	 * @return the phoneNumber
-	 */
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	/**
-	 * @param phoneNumber the phoneNumber to set
-	 */
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	/**
-	 * @return the emailAddress
-	 */
-	public String getEmailAddress() {
-		return emailAddress;
-	}
-
-	/**
-	 * @param emailAddress the emailAddress to set
-	 */
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
 	}
 }
