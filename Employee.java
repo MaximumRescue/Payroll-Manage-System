@@ -1,15 +1,15 @@
 import java.util.*;
 /**
- * ����Ա����Ϣ����
- * @version 1.11 2018-06-27
+ * 描述员工信息的类
+ * @version 1.13 2018-06-28
  * @author Jiamin Pan
  */
 public class Employee {
-    private String Eid;
-    private String Ename;
-    private String Dname;
-    private int basicSalary = 0;
-    private int extraSalary = 0;
+    private String employeeID;
+    private String employeeName;
+    private String departName;
+    private int basicSalary;
+    private int extraSalary;
     private int taxMoney;
     private Map<String, Integer> timeInfo;
     private final int heatSubsidy = 100;
@@ -28,10 +28,16 @@ public class Employee {
     private final double proFundRateByE = 0.08;
     private final double proFundRateByC = 0.08;
              
-
-    public Employee(String Eid, String Ename) {
-        this.setEid(Eid);
-        this.setEname(Ename); 
+    /**
+     * constructor
+     * @param employeeID employee's id
+     * @param employeeName employee's name
+     */
+    public Employee(String employeeID, String employeeName) {
+        this.employeeID = employeeID;
+        this.setEmployeeName(employeeName); 
+        this.setBasicSalary(0);
+        this.setExtraSalary(0);
         this.timeInfo = new HashMap<>();
         timeInfo.put("SickOffDays", 0);
         timeInfo.put("BusyOffDays", 0);
@@ -40,38 +46,38 @@ public class Employee {
     }
 
 	/**
-	 * @return the eid
+	 * @return the employeeID
 	 */
-	public String getEid() {
-		return Eid;
+	public String getEmployeeID() {
+		return employeeID;
 	}
 
 	/**
 	 * @return the ename
 	 */
-	public String getEname() {
-		return Ename;
+	public String getEmployeeName() {
+		return employeeName;
 	}
 
 	/**
-	 * @param ename the ename to set
+	 * @param employeeName the ename to set
 	 */
-	public void setEname(String ename) {
-		this.Ename = ename;
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
 	}
 
     /**
-	 * @return the dname
+	 * @return the departName
 	 */
-	public String getDname() {
-		return Dname;
+	public String getDepartName() {
+		return departName;
 	}
 
 	/**
-	 * @param dname the dname to set
+	 * @param departName the departName to set
 	 */
-	public void setDname(String dname) {
-		this.Dname = dname;
+	public void setDepartName(String departName) {
+		this.departName = departName;
 	}
 
     /**
@@ -92,7 +98,7 @@ public class Employee {
 	 * @return the extraSalary
 	 */
 	public int getExtraSalary() {
-		return basicSalary;
+		return extraSalary;
 	}
 
 	/**
@@ -113,71 +119,124 @@ public class Employee {
 	 * @param none
 	 */
 	public void setTaxMoney() {
+        // 收税方法似乎应该更加复杂一些
 		this.taxMoney = (int) (basicSalary * 0.05);
 	}
     
     /**
      * @param days the days of sickness dayoff
      */
-    public int setSickOffDays(int days) {
+    public void setSickOffDays(int days) {
+        Integer Days = new Integer(days);
+        Integer preValue = new Integer(0);
         if (days >= 0) {
-            return this.timeInfo.replace("SickOffDays", days).intValue();
+            preValue = this.timeInfo.replace("SickOffDays", Days);
+        }
+        else {
+            // 这里应该是参数报错的部分，根据网页进行处理
+            System.out.println("时间必须为正整数");
         }
     }
 
     /**
      * @param days the days of business dayoff
      */
-    public int setBusyOffDays(int days) {
+    public void setBusyOffDays(int days) {
+        Integer Days = new Integer(days);
+        Integer preValue = new Integer(0);
         if (days >= 0) {
-            return this.timeInfo.replace("BasyOffDays", days).intValue();
+            preValue = this.timeInfo.replace("BasyOffDays", Days);
+        }
+        else {
+            // 这里应该是参数报错的部分，根据网页进行处理
+            System.out.println("时间必须为正整数");
         }
     }
 
     /**
      * @param days the days of being late
      */
-    public int setLateDays(int days) {
+    public void setLateDays(int days) {
+        Integer Days = new Integer(days);
+        Integer preValue = new Integer(0);
         if (days >= 0) {
-            return this.timeInfo.replace("LateDays", days).intValue();
+            preValue = this.timeInfo.replace("LateDays", Days);
+        }
+        else {
+            // 这里应该是参数报错的部分，根据网页进行处理
+            System.out.println("时间必须为正整数");
         }
     }    
 
     /**
      * @param days the days of overtime days
      */
-    public int setOvertimeDays(int days) {
+    public void setOvertimeDays(int days) {
+        Integer Days = new Integer(days);
+        Integer preValue = new Integer(0);
         if (days >= 0) {
-            return this.timeInfo.replace("OvertimeDays", days).intValue();
+            preValue = this.timeInfo.replace("OvertimeDays", Days);
         }
+        else {
+            // 这里应该是参数报错的部分，根据网页进行处理
+            System.out.println("时间必须为正整数");
+        }
+    }
+
+    /**
+     * @return the days of sickoff
+     */
+    public int getSickOffDays() {
+        return timeInfo.get("SickOffDays").intValue();
+    }
+
+    /**
+     * @return the days of business off
+     */
+    public int getBusyOffDays() {
+        return timeInfo.get("BusyOffDays").intValue();
+    }
+
+    /**
+     * @return the days of being late
+     */
+    public int getLateDays() {
+        return timeInfo.get("LateDays").intValue();
+    }    
+
+    /**
+     * @return the days of overtime working
+     */
+    public int getOvertimeDays() {
+        return timeInfo.get("OvertimeDays").intValue();
     }
 
     /**
      * @return the money of sickoff
      */
     public int getSickOffMoney() {
-        return moneyOfSick * timeInfo.get("SickOffDays").intValue();
+        return moneyOfSick * this.getSickOffDays();
     }
 
     /**
      * @return the money of business off
      */
     public int getBusyOffMoney() {
-        return moneyOfBusy * timeInfo.get("BusyOffDays").intValue();
+        return moneyOfBusy * this.getBusyOffDays();
     }
 
     /**
      * @return the money of being late
      */
     public int getLateMoney() {
-        return moneyOfLate * timeInfo.get("LateDays").intValue();
+        return moneyOfLate * this.getLateDays();
     }    
 
     /**
      * @return the money of overtime working
      */
     public int getOvertimeMoney() {
-        return moneyOfOvertime * timeInfo.get("OvertimeDays").intValue();
+        return moneyOfOver * this.getOvertimeDays();
     }
 
     /**
@@ -255,10 +314,11 @@ public class Employee {
      */
     public int getSalary() {
         int income = this.basicSalary + this.extraSalary + this.heatSubsidy
-            + getOvertimeMoney();
-        int outcome_1 = getSickOffMoney() + getBusyOffMoney() + getLateMoney();
-        int outcome_2 = getPensionByE() + getMedicByE() + getUnemployByE()
-            + getProFundByE();
+            + this.getOvertimeMoney();
+        int outcome_1 = this.getSickOffMoney() + this.getBusyOffMoney() 
+            + this.getLateMoney();
+        int outcome_2 = this.getPensionByE() + this.getMedicByE() 
+            + this.getUnemployByE() + this.getProFundByE();
         return income - outcome_1 - outcome_2 - this.taxMoney;
     }
 }
